@@ -62,9 +62,15 @@ get_header();
         <!-- section close -->
 
         <!-- section gmap begin -->
-        <section id="section-gmap" class="no-padding">
-            <div id="map-canvas" class="map-canvas"></div>
-        </section>
+        <?php
+        if($localisation = get_field("localisation")):
+        ?>
+            <section id="section-gmap" class="no-padding">
+                <div id="map-canvas" class="map-canvas" data-latitude="<?php echo $localisation["google_maps"]["lat"]; ?>" data-longitude="<?php echo $localisation["google_maps"]["lng"]; ?>" data-address="<?php echo $localisation['adresse']; ?>" data-icon="<?php echo get_stylesheet_directory_uri().'/images/cd-icon-location.png'; ?>"></div>
+            </section>
+        <?php
+        endif;
+        ?>
         <!-- section gmap close -->
 
     </div>
