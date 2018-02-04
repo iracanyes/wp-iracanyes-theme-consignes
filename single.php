@@ -81,6 +81,7 @@ get_header();
                     </div>
                     <div class="col-md-3">
                         <div class="main-sidebar">
+                            <!--
                             <aside class="widget widget_text">
                                 <h3 class="widget-title">About</h3>
                                 <div class="tiny-border"></div>                                         
@@ -90,8 +91,14 @@ get_header();
                                     </p>                              
                                 </div>
                             </aside>
+                            -->
+                            <?php
+                            // Widget texte
+                            dynamic_sidebar("text-bloc-sidebar");
+                            ?>
+
                             <aside class="widget widget_categories">
-                                <h3 class="widget-title">Categories</h3>
+                                <h3 class="widget-title"><?php _e("Catégories", "wp-theme-base-translate"); ?></h3>
                                 <div class="tiny-border"></div>    
                                 <ul>
                                     <li class="cat-item"><a href="#">Finance</a></li>
