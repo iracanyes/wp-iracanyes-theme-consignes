@@ -93,79 +93,63 @@ get_header();
                         <div class="col-md-12">
                             <div class="latest-projects clearfix">
                                 <div class="latest-projects-intro">
-                                    <h2 class="box-title">Derniers articles</h2>
+                                    <h2 class="box-title"><?php _e("Derniers articles","wp-theme-base-translate"); ?></h2>
                                     <div class="tiny-border-light"></div>            
-                                    <p>Pellentesque gravida diam orci, vitae venenatis est eleifend sed. Proin non pretium turpis</p>        
+                                    <p>
+                                        <?php
+                                        _e("Quand on suit quelqu'un de bon, on apprend à devenir bon ; quand on suit un tigre, on apprend à mordre.", 'wp-theme-base-translate');
+                                        ?>
+                                    </p>
                                 </div>
                                 <div class="latest-projects-wrapper">
+                                    <?php
+                                    $posts = wp_get_recent_posts(
+                                        array(
+                                            "numberposts" => 6,
+                                            "orderby" => "post_date",
+                                            "order" => "DESC",
+                                            "post_type" => "post"
+                                        ),
+                                        ARRAY_A
+                                    );
+
+                                    if($posts):
+                                    ?>
                                     <div id="latest-projects-items" class="latest-projects-items">
+                                        <?php
+                                        foreach ($posts as $post):
+                                        ?>
                                         <div class="item">
+                                            <!--
                                             <img src="images/projects/small-2.jpg" alt="" class="img-responsive">
+                                            -->
+                                            <?php
+                                            echo get_the_post_thumbnail(
+                                                    $post["ID"],
+                                                    "post-thumbnail",
+                                                    array("class" => "img-responsive")
+                                            );
+                                            ?>
                                             <div class="project-details">
-                                                <p class="folio-title"><a href="#">Plan For Your Bussiness</a></p>
-                                                <p class="folio-cate"><i class="fa fa-tag"></i><a href="#">Finance</a>, <a href="#">Marketing</a></p>
+                                                <p class="folio-title"><a href="<?php echo get_permalink($post["ID"]); ?>"><?php echo get_the_title(); ?></a></p>
+                                                <p class="folio-cate"><i class="fa fa-tag"></i>
+                                                    <?php
+                                                    echo get_the_category_list(", ", "", $post["ID"]);
+                                                    ?>
+                                                </p>
                                                 <div class="folio-buttons">
-                                                    <a href="images/projects/medium-1.jpg" title="Plan For Your Bussiness" class="folio"><i class="fa fa-search"></i></a>
-                                                    <a href="#"><i class="fa fa-link"></i></a>
+                                                    <a href="<?php echo get_stylesheet_directory_uri(); ?>/images/projects/medium-1.jpg" title="<?php echo $post['post_title']; ?>" class="folio"><i class="fa fa-search"></i></a>
+                                                    <a href="<?php echo get_permalink($post['ID']); ?>"><i class="fa fa-link"></i></a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="item">
-                                            <img src="images/projects/small-3.jpg" alt="" class="img-responsive">
-                                            <div class="project-details">
-                                                <p class="folio-title"><a href="#">Business Growth Solutions</a></p>
-                                                <p class="folio-cate"><i class="fa fa-tag"></i><a href="#">Finance</a>, <a href="#">Marketing</a></p>
-                                                <div class="folio-buttons">
-                                                    <a href="images/projects/medium-2.jpg" title="Business Growth Solutions" class="folio"><i class="fa fa-search"></i></a>
-                                                    <a href="#"><i class="fa fa-link"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <img src="images/projects/small-4.jpg" alt="" class="img-responsive">
-                                            <div class="project-details">
-                                                <p class="folio-title"><a href="#">Enterprise Development</a></p>
-                                                <p class="folio-cate"><i class="fa fa-tag"></i><a href="#">Finance</a>, <a href="#">Marketing</a></p>
-                                                <div class="folio-buttons">
-                                                    <a href="images/projects/medium-3.jpg" title="Enterprise Development" class="folio"><i class="fa fa-search"></i></a>
-                                                    <a href="#"><i class="fa fa-link"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <img src="images/projects/small-1.jpg" alt="" class="img-responsive">
-                                            <div class="project-details">
-                                                <p class="folio-title"><a href="#">Successful Business</a></p>
-                                                <p class="folio-cate"><i class="fa fa-tag"></i><a href="#">Finance</a>, <a href="#">Marketing</a></p>
-                                                <div class="folio-buttons">
-                                                    <a href="images/projects/medium-4.jpg" title="Successful Business" class="folio"><i class="fa fa-search"></i></a>
-                                                    <a href="#"><i class="fa fa-link"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <img src="images/projects/small-5.jpg" alt="" class="img-responsive">
-                                            <div class="project-details">
-                                                <p class="folio-title"><a href="#">Marketing Strategy</a></p>
-                                                <p class="folio-cate"><i class="fa fa-tag"></i><a href="#">Finance</a>, <a href="#">Marketing</a></p>
-                                                <div class="folio-buttons">
-                                                    <a href="images/projects/medium-5.jpg" title="Marketing Strategy" class="folio"><i class="fa fa-search"></i></a>
-                                                    <a href="#"><i class="fa fa-link"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <img src="images/projects/small-6.jpg" alt="" class="img-responsive">
-                                            <div class="project-details">
-                                                <p class="folio-title"><a href="#">Effective Recruitment</a></p>
-                                                <p class="folio-cate"><i class="fa fa-tag"></i><a href="#">Finance</a>, <a href="#">Marketing</a></p>
-                                                <div class="folio-buttons">
-                                                    <a href="images/projects/medium-6.jpg" title="Effective Recruitment" class="folio"><i class="fa fa-search"></i></a>
-                                                    <a href="#"><i class="fa fa-link"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <?php
+                                        endforeach;
+                                        ?>
                                     </div>
+                                    <?php
+                                    endif;
+                                    ?>
                                 </div>
                             </div>
                         </div>
