@@ -40,51 +40,52 @@ get_header();
                             if(!empty($videos)):
 
                             ?>
-                            <div class="box-intro-video">
-                                <div id="overlay-video" class="overlay-video-intro">
-                                    <img alt="<?php echo $videos['image']['alt'] ? $videos['image']['alt'] : ""; ?>" src="<?php echo $videos["image"]["url"]; ?>" class="img-responsive" />
-                                    <a href="https://www.youtube.com/watch?v=MSEbKgpiY14" class="btn-intro-video"><i class="fa fa-play"></i></a>
-                                </div>
-                                <div id="thevideo" style="">
-                                    <?php
-                                    // IFRAME
-                                    $iframe = $videos["video"];
+                                <div class="box-intro-video">
+                                    <div id="overlay-video" class="overlay-video-intro">
+                                        <img alt="<?php echo $videos['image']['alt'] ? $videos['image']['alt'] : ""; ?>" src="<?php echo $videos["image"]["url"]; ?>" class="img-responsive" />
+                                        <a href="<?php echo $videos["video"]["url"]; ?>?autoplay=1" class="btn-intro-video"><i class="fa fa-play"></i></a>
+                                    </div>
 
-                                    // Attribut src
-                                    preg_match("/src='(.+?)'", $iframe, $matches);
+                                    <div id="thevideo" style="">
+                                        <?php
+                                        // le iFrame HMTL
+                                        $iframe = $videos["video"];
 
-                                    $src = $matches[1];
+                                        // recherche de l'attribut src
+                                        preg_match("/src='(.+?)'", $iframe, $matches);
+                                        $src = $matches[1];
 
-                                    // Ajout de paramètres à l'iframe
-                                    $params = array(
-                                        "controls" => 1,
-                                        "hd" => 1,
-                                        "autohide" => 1
-                                    );
+                                        // Ajout de paramètres à l'iframe
+                                        $params = array(
+                                            "controls" => 1,
+                                            "hd" => 1,
+                                            "autohide" => 1
+                                        );
 
-                                    $new_src = add_query_arg($params, $src);
+                                        $new_src = add_query_arg($params, $src);
 
-                                    $iframe = str_replace($src, $new_src, $iframe);
+                                        $iframe = str_replace($src, $new_src, $iframe);
 
-                                    // Ajout attribut dans balise iFrame HTML
-                                    $attributes = 'id="someFrame" width="750" height="422" frameborder="0" allowfullscreen ';
+                                        // Ajout d'attributs à la balise IFrame HTML
+                                        $attributes = 'id="someFrame" width="750" height="422" frameborder="0" allowfullscreen';
 
-                                    $iframe = str_replace(
+                                        $iframe = str_replace(
                                             '></iframe>',
                                             ' '.$attributes.'></iframe>',
                                             $iframe
-                                    );
+                                        );
 
-                                    // Affichage de l'iframe
-                                    echo $iframe;
+                                        // Affichage de l'iframe
+                                        echo $iframe;
 
-                                    // Récupération de l'Icon Play
-                                    $iconPlay = $videos['image'];
-                                    ?>
+                                        //Récupération d'Icon Play
+                                        $iconPlay = $videos["image"];
+                                        ?>
+                                    </div>
+
+
 
                                 </div>
-
-                            </div>
                                 <style>
 
                                     #thevideo {
