@@ -128,20 +128,33 @@ get_header();
             <!-- section begin -->
             <section id="section-about" class="margin-top-80">                
                 <div class="container">
-                    <div class="row">                        
+                    <?php
+                    if(have_rows("section2")):
+                    ?>
+                    <div class="row">
+                        <?php
+                        while(have_rows("section2")): the_row();
+                        ?>
                         <div class="col-md-4">
-                            <h5>We are Compact</h5>  
-                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed quis neque rutrum, dignissim libero vitae, ullamcorper diam. Donec eros massa, cursus eu risus nec, tempus aliquam odio. Proin lacinia urna ac ex euismod imperdiet.</p>                  
+                            <h5>
+                                <?php
+                                the_sub_field("titre");
+                                ?>
+                            </h5>
+                            <p>
+                                <?php
+                                the_sub_field("texte");
+                                ?>
+                            </p>
                         </div>
-                        <div class="col-md-4">
-                            <h5>What We Do?</h5> 
-                            <p>Sed dui nisi, feugiat ac dictum sed, feugiat vel sem. Ut elementum nisl sit amet metus fermentum, nec ultricies ipsum accumsan. Sed eget molestie lectus. Fusce egestas at lorem ac semper. Curabitur  vehicula vitae ipsum eu pulvinar. Cras egestas eros sed</p>                    
-                        </div>
-                        <div class="col-md-4">
-                            <h5>Why Choose Us?</h5>
-                            <p>Lectus volutpat, sed malesuada ligula blandit. Pellentesque consequat dui sit amet quam tincidunt dapibus. Etiam sapien magna, maximus eu sagittis nec, fringilla et ipsum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>                                  
-                        </div>
+                        <?php
+                        endwhile;
+                        wp_reset_postdata();
+                        ?>
                     </div>
+                    <?php
+                    endif;
+                    ?>
                 </div>        
             </section>
             <!-- section close -->
