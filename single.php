@@ -96,16 +96,18 @@ get_header();
                             // Widget texte
                             dynamic_sidebar("text-bloc-sidebar");
                             ?>
-
+                            <!-- Deuxième Widget -->
                             <aside class="widget widget_categories">
                                 <h3 class="widget-title"><?php _e("Catégories", "wp-theme-base-translate"); ?></h3>
                                 <div class="tiny-border"></div>    
-                                <ul>
-                                    <li class="cat-item"><a href="#">Finance</a></li>
-                                    <li class="cat-item"><a href="#">Bilan</a></li>
-                                    <li class="cat-item"><a href="#">Conseils</a></li>
-                                    <li class="cat-item"><a href="#">Juridique</a></li>
-                                </ul>
+                                <?php
+                                $argsSidebar = array(
+                                    "menu" => "sidebar-menu",
+                                    "theme_location" => "sidebar-menu"
+                                );
+
+                                wp_nav_menu($arsSidebar);
+                                ?>
                             </aside>
                         </div>                        
                     </div>
