@@ -42,7 +42,7 @@ get_header();
                                 if($image = get_field("image")):
                                 ?>
                                 <div class="post-media">
-                                    <img src="<?php echo $image["sizes"]["medium"]; ?>" class="img-responsive">
+                                    <img src="<?php echo wp_get_attachment_url(get_post_thumbnail_id()); ?>" class="img-responsive">
                                 </div>
                                 <?php
                                 endif;
