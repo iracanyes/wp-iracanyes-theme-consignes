@@ -1,0 +1,29 @@
+
+@media only screen and (min-width: 960px) {
+    /**
+      Page Accueil Section 3 Taille de l'icon
+     */
+    .service-box i.fa{
+        font-size:32px;
+    }
+
+    /*
+        A propos : Vidéo
+        Ajustement taille
+     */
+    #overlay-video img.img-responsive{
+        height: 422px;
+        width: 750px;
+    }
+    /*
+        Catégories : Article excerpt
+        taille paragraphe
+     */
+    .post-entry{
+        width:360px;
+    }
+    .post-entry p{
+        width: 360px;
+        overflow: hidden;
+    }
+}
