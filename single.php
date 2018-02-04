@@ -2,6 +2,9 @@
 /**
  * Description : template article
  */
+
+// HEADER
+get_header();
 ?>
 
         <?php
@@ -35,35 +38,38 @@
                         <div class="blog-single">
                             <!-- post begin -->
                             <article>
+                                <?php
+                                if($image = get_field("image")):
+                                ?>
                                 <div class="post-media">
-                                    <img src="<?php echo wp_get_attachment_url( get_post_thumbnail_id() ); ?>" class="img-responsive">
+                                    <img src="<?php echo $image["sizes"]["medium"]; ?>" class="img-responsive">
                                 </div>
+                                <?php
+                                endif;
+                                ?>
                                 <div class="post-content">
                                     <div class="post-title">
-                                        <h1>Nom de l'article</h1>
+                                        <h1><?php the_title(); ?></h1>
                                     </div>
                                     <div class="post-metadata">                                        
                                         <span class="posted-on">
                                             <i class="fa fa-clock-o"></i>
-                                            November 30, 2016
+                                            <?php the_time("F j, Y"); ?>
                                         </span>
                                         <span class="byline">
                                             <i class="fa fa-user"></i>
-                                            <a href="#">AuThemes</a>
+                                            <?php the_author(); ?>
                                         </span>
                                         <span class="cat-links">                                            
                                             <i class="fa fa-folder-open"></i>
-                                            <a href="#">Markup</a>
+                                            <?php the_category(", "); ?>
                                         </span>
                                     </div>
                                     <div class="hr"></div>
                                     <div class="post-entry">
-                                        <p>Fusce ornare mi vel risus porttitor dignissim. Nunc eget risus at ipsum blandit ornare vel sed velit. Proin gravida arcu nisl, a dignissim mauris placerat id. Vivamus interdum urna at sapien varius elementum. Suspendisse ut mi felis et interdum libero lacinia vel. Aenean elementum odio ut lorem cursus, eu auctor magna pellentesque.  Cras facilisis quam sed rhoncus dapibus. Quisque lorem enim, dictum at magna eu, hendrerit hendrerit arcu. Etiam vulputate ac tortor ac gravida. Proin accumsan placerat rutrum. Praesent ut eros ac nisi ultrices rhoncus et.</p> 
-                                        <p>Nulla fermentum eros vitae est finibus dapibus. Aliquam porta nulla a elit varius efficitur. In in magna sed turpis venenatis tristique eu eget neque. Duis condimentum libero ornare quam tincidunt interdum. Phasellus porttitor nisi ut lectus pellentesque, ut fringilla leo convallis. </p>
-                                        <p>Fusce ornare mi vel risus porttitor dignissim. Nunc eget risus at ipsum blandit ornare vel sed velit. Proin gravida arcu nisl, a dignissim mauris placerat id. Vivamus interdum urna at sapien varius elementum. Suspendisse ut mi felis et interdum libero lacinia vel. Aenean elementum odio ut lorem cursus, eu auctor magna pellentesque.  Cras facilisis quam sed rhoncus dapibus. Quisque lorem enim, dictum at magna eu, hendrerit hendrerit arcu. Etiam vulputate ac tortor ac gravida. Proin accumsan placerat rutrum. Praesent ut eros ac nisi ultrices rhoncus et.</p>
-                                        <p>Nulla fermentum eros vitae est finibus dapibus. Aliquam porta nulla a elit varius efficitur. In in magna sed turpis venenatis tristique eu eget neque. Duis condimentum libero ornare quam tincidunt interdum. Phasellus porttitor nisi ut lectus pellentesque, ut fringilla leo convallis. </p>
-                                        <p>Fusce ornare mi vel risus porttitor dignissim. Nunc eget risus at ipsum blandit ornare vel sed velit. Proin gravida arcu nisl, a dignissim mauris placerat id. Vivamus interdum urna at sapien varius elementum. Suspendisse ut mi felis et interdum libero lacinia vel. Aenean elementum odio ut lorem cursus, eu auctor magna pellentesque.  Cras facilisis quam sed rhoncus dapibus. Quisque lorem enim, dictum at magna eu, hendrerit hendrerit arcu. Etiam vulputate ac tortor ac gravida. Proin accumsan placerat rutrum. Praesent ut eros ac nisi ultrices rhoncus et.</p>
-                                        <p>Nulla fermentum eros vitae est finibus dapibus. Aliquam porta nulla a elit varius efficitur. In in magna sed turpis venenatis tristique eu eget neque. Duis condimentum libero ornare quam tincidunt interdum. Phasellus porttitor nisi ut lectus pellentesque, ut fringilla leo convallis. </p>
+                                        <?php
+                                        the_content();
+                                        ?>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
