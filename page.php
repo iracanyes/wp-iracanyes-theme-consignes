@@ -16,10 +16,24 @@ get_header();
                 <div class="container">
                     <div class="row">                                                
                         <div class="col-md-8 col-md-offset-2">
+                            <?php
+                            if($section1 = get_field("section1")):
+                            ?>
                             <div class="about-text-intro text-center">
-                                <h2>About Compact</h2>
-                                <p>We’re help your vulputate bibendum justo sed, tincidunt quisque dictum eget dolor vel maximus.</p>
+                                <h2>
+                                    <?php
+                                    echo $section1["titre"];
+                                    ?>
+                                </h2>
+                                <p>
+                                    <?php
+                                    echo $section1["texte"];
+                                    ?>
+                                </p>
                             </div>
+                            <?php
+                            endif;
+                            ?>
                             <div class="box-intro-video">
                                 <div id="overlay-video" class="overlay-video-intro">
                                     <img alt="" src="images/about/intro-video.jpg" class="img-responsive" />
