@@ -145,6 +145,7 @@ get_header();
                                         </div>
                                         <?php
                                         endforeach;
+                                        wp_reset_postdata();
                                         ?>
                                     </div>
                                     <?php
@@ -162,35 +163,40 @@ get_header();
             <section>
                 <!-- Container Begin -->
                 <div class="container">
+                <?php
+                if($rows = get_field("accueil_3box")):
+                ?>
                     <div class="row">
+                        <?php
+                        foreach ($rows as $row):
+                        ?>
                         <div class="col-md-4">
                             <div class="service-box service-style2">
+                                <!--
                                 <img src="images/services/thumbs-1.png" alt="" class="img-responsive">
+                                -->
+                                <i class="fa <?php echo $row["accueil_3box_icon"]; ?>"></i>
                                 <div class="service-content">
-                                    <h3>Mobile Ready</h3>
-                                    <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. </p>
+                                    <h3>
+                                        <?php
+                                        echo $row["accueil_3box_titre"];
+                                        ?>
+                                    </h3>
+                                    <p>
+                                        <?php
+                                        echo $row["accueil_3box_texte"];
+                                        ?>
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="service-box service-style2">
-                                <img src="images/services/thumbs-2.png" alt="" class="img-responsive">
-                                <div class="service-content">
-                                    <h3>Very Easy Customizie</h3>
-                                    <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="service-box service-style2">
-                                <img src="images/services/thumbs-3.png" alt="" class="img-responsive">
-                                <div class="service-content">
-                                    <h3>Free Icon Font Awesome</h3>
-                                    <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. </p>
-                                </div>
-                            </div>
-                        </div>
+                        <?php
+                        endforeach;
+                        ?>
                     </div>
+                <?php
+                endif;
+                ?>
                 </div>
                 <!-- Container End -->
             </section>
