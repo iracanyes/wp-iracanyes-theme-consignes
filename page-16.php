@@ -50,7 +50,11 @@ get_header();
                             </div>
                         </form>
                         -->
-                            
+                        <?php
+                        if($form = get_field("contact_form")):
+                            echo $form;
+                        endif;
+                        ?>
                     </div>
                 </div>
             </div>
