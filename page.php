@@ -33,16 +33,92 @@ get_header();
                             </div>
                             <?php
                             endif;
+
+                            // SECTION VIDEO
+                            $videos = get_field("section_video");
+
+                            if(!empty($videos)):
+
                             ?>
                             <div class="box-intro-video">
                                 <div id="overlay-video" class="overlay-video-intro">
-                                    <img alt="" src="images/about/intro-video.jpg" class="img-responsive" />
-                                    <a href="https://www.youtube.com/embed/keDneypw3HY?autoplay=1" class="btn-intro-video"><i class="fa fa-play"></i></a>
+                                    <img alt="<?php echo $videos['image']['alt'] ? $videos['image']['alt'] : ""; ?>" src="<?php echo $videos["image"]["url"]; ?>" class="img-responsive" />
+                                    <a href="https://www.youtube.com/watch?v=MSEbKgpiY14" class="btn-intro-video"><i class="fa fa-play"></i></a>
                                 </div>
-                                <div id="thevideo" style="display:none">
-                                    <iframe id="someFrame" width="750" height="422" src="" frameborder="0" allowfullscreen></iframe>
+                                <div id="thevideo" style="">
+                                    <?php
+                                    // IFRAME
+                                    $iframe = $videos["video"];
+
+                                    // Attribut src
+                                    preg_match("/src='(.+?)'", $iframe, $matches);
+
+                                    $src = $matches[1];
+
+                                    // Ajout de paramètres à l'iframe
+                                    $params = array(
+                                        "controls" => 1,
+                                        "hd" => 1,
+                                        "autohide" => 1
+                                    );
+
+                                    $new_src = add_query_arg($params, $src);
+
+                                    $iframe = str_replace($src, $new_src, $iframe);
+
+                                    // Ajout attribut dans balise iFrame HTML
+                                    $attributes = 'id="someFrame" width="750" height="422" frameborder="0" allowfullscreen ';
+
+                                    $iframe = str_replace(
+                                            '></iframe>',
+                                            ' '.$attributes.'></iframe>',
+                                            $iframe
+                                    );
+
+                                    // Affichage de l'iframe
+                                    echo $iframe;
+
+                                    // Récupération de l'Icon Play
+                                    $iconPlay = $videos['image'];
+                                    ?>
+
                                 </div>
-                            </div>                            
+
+                            </div>
+                                <style>
+
+                                    #thevideo {
+                                        position: relative;
+                                        padding-bottom: 0%;
+                                        overflow: hidden;
+                                        max-width: 100%;
+                                        height: auto;
+                                    }
+
+                                    #thevideo iframe,
+                                    #thevideo object,
+                                    #thevideo embed {
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        height: 100%;
+                                    }
+                                    button.ytp-large-play-button{
+                                        background: url("<?php echo $videos['image']['url']; ?>") !important;
+                                        height: 48px;
+                                        width: 68px;
+                                    }
+
+                                    button.ytp-large-play-button svg{
+                                        display: none;
+
+                                    }
+
+                                </style>
+                            <?php
+                            endif;
+                            ?>
                         </div>
                     </div>
                 </div>        
