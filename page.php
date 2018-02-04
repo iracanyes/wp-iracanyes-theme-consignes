@@ -160,58 +160,9 @@ get_header();
             <!-- section close -->
 
             <!-- section begin -->
-            <section id="section-team" class="bg-grey">                
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="text-center">
-                                <h2>The Great Team</h2>                                
-                                <div class="tiny-border"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="team-box">
-                                <div class="team-inner">
-                                    <img src="images/team/thumb-1.png" alt="" class="img-circle">
-                                    <div class="mask"></div>
-                                </div>                                
-                                <h6>Peter Hart</h6>
-                                <div class="subtext">Creative Director</div>
-                            </div>                     
-                        </div>
-                        <div class="col-md-3">
-                            <div class="team-box">
-                                <div class="team-inner">
-                                    <img src="images/team/thumb-2.png" alt="" class="img-circle">
-                                    <div class="mask"></div>
-                                </div>                                
-                                <h6>Betty Lane</h6>
-                                <div class="subtext">Marketing Manager</div>
-                            </div>                      
-                        </div>
-                        <div class="col-md-3">
-                            <div class="team-box">
-                                <div class="team-inner">
-                                    <img src="images/team/thumb-3.png" alt="" class="img-circle">
-                                    <div class="mask"></div>
-                                </div>                                
-                                <h6>Richard Pierce</h6>
-                                <div class="subtext">Risk Analyst</div>
-                            </div>                                
-                        </div>
-                        <div class="col-md-3">
-                            <div class="team-box">
-                                <div class="team-inner">
-                                    <img src="images/team/thumb-4.png" alt="" class="img-circle">
-                                    <div class="mask"></div>
-                                </div>
-                                <h6>Janice Rose</h6>
-                                <div class="subtext">Accountant</div>
-                            </div>                                
-                        </div>
-                    </div>
-                </div>        
-            </section>
+            <?php
+            include_once ("include/equipe.php");
+            ?>
             <!-- section close -->
             
         </div>
