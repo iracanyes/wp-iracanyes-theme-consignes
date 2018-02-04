@@ -53,23 +53,36 @@ get_header();
 
             <!-- section begin -->
             <section id="section-about">
+                <?php
+                // Section 1 = ACF Image, Titre et WYSIWYG
+                $section1 = get_field("section1_exam");
+
+                if($section1):
+                ?>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 col-sm-4">
-                            <img src="images/about/we-are-thumb.jpg" alt="about image" class="img-responsive">
+                            <img src="<?php echo $section1["image"]["url"]; ?>" alt="<?php echo $section1["image"]["alt"]; ?>" class="img-responsive">
                         </div>
                         <div class="col-md-8 col-sm-8">
                             <div class="about-box">
-                                <h2 class="box-title">We are Compact</h2>
+                                <h2 class="box-title">
+                                    <?php
+                                    echo $section1["titre"];
+                                    ?>
+                                </h2>
                                 <div class="tiny-border"></div>
-                                <p>Morbi vehicula a nibh in commodo. Aliquam quis dolor eget lectus pulvinar malesuada. Suspendisse eu rhoncus ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra,</p>
-                                <p>Morbi vehicula a nibh in commodo. Aliquam quis dolor eget lectus pulvinar malesuada. Suspendisse eu rhoncus ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra,</p>
-                                <p>Morbi vehicula a nibh in commodo. Aliquam quis dolor eget lectus pulvinar malesuada. Suspendisse eu rhoncus ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra,</p>
-                                <p>Morbi vehicula a nibh in commodo. Aliquam quis dolor eget lectus pulvinar malesuada. Suspendisse eu rhoncus ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra,</p>
+
+                                <?php
+                                echo $section1["texte"];
+                                ?>
                             </div>
                         </div>
                     </div>
-                </div>        
+                </div>
+                <?php
+                endif;
+                ?>
             </section>
             <!-- section close -->
 
