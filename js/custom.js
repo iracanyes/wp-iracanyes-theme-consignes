@@ -13,9 +13,26 @@ $(function ()  {
        src = src+"&autoplay=1";
        console.log(src);
 
+       console.log($.support);
+       
        // placement du nouvel attribut source dans la balise iframe
-       $("#thevideo>iframe").attr('src', src );
-       $("#thevideo").css("padding-bottom","56.25%");
+       if( ! window.chrome ){
+           console.log($.support);
+
+           $("#thevideo>iframe").attr('src', src );
+
+           $("#thevideo").css("padding-bottom","56.25%");
+
+       }else{
+           $("#thevideo").css("-webkit-padding-after","56.25%");
+       }
+
+
+
+       /* $("#thevideo").css("webkit-padding-after", "56.25%"); */
+
+
+
    });
 });
 
