@@ -32,6 +32,9 @@
     <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/switcher/demo.css" type="text/css">
     <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/switcher/colors/blue.css" type="text/css" id="colors">
 
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/css/custom.css" type="text/css">
+
 </head>
 
 <body>
@@ -57,7 +60,7 @@
 
                         <!-- logo begin -->
                         <div id="logo" class="pull-left">
-                            <a href="<?php echo get_the_permalink(7); ?>">
+                            <a href="<?php echo get_permalink(7); ?>">
                                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.png" alt="" class="logo">
                             </a>
                         </div>
