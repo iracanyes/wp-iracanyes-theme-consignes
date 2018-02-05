@@ -41,18 +41,13 @@ get_header();
 
                             ?>
                                 <div class="box-intro-video">
-                                    <div id="overlay-video" class="overlay-video-intro">
-                                        <img alt="<?php echo $videos['image']['alt'] ? $videos['image']['alt'] : ""; ?>" src="<?php echo $videos["image"]["url"]; ?>" class="img-responsive" />
-                                        <a href="<?php echo $videos["video"]["url"]; ?>?autoplay=1" class="btn-intro-video"><i class="fa fa-play"></i></a>
-                                    </div>
-
-                                    <div id="thevideo" style="">
-                                        <?php
+                                    <?php
                                         // le iFrame HMTL
                                         $iframe = $videos["video"];
 
+                                        //echo $iframe;
                                         // recherche de l'attribut src
-                                        preg_match("/src='(.+?)'", $iframe, $matches);
+                                        preg_match('/src="(.+?)"/', $iframe, $matches);
                                         $src = $matches[1];
 
                                         // Ajout de paramètres à l'iframe
@@ -65,58 +60,65 @@ get_header();
                                         $new_src = add_query_arg($params, $src);
 
                                         $iframe = str_replace($src, $new_src, $iframe);
-
+                                        
                                         // Ajout d'attributs à la balise IFrame HTML
-                                        $attributes = 'id="someFrame" width="750" height="422" frameborder="0" allowfullscreen';
+                                        $attributes = 'id="monFrame" width="750" height="422" frameborder="0" ';
 
                                         $iframe = str_replace(
                                             '></iframe>',
                                             ' '.$attributes.'></iframe>',
                                             $iframe
                                         );
+                                    ?>
+                                    <div id="overlay-video" class="overlay-video-intro">
+                                        <img alt="<?php echo $videos['image']['alt'] ? $videos['image']['alt'] : ""; ?>" src="<?php echo $videos["image"]["url"]; ?>" class="img-responsive" />
 
+                                        <a href="#" class="btn-intro-video"><i class="fa fa-play"></i></a>
+
+                                    </div>
+
+                                    <div id="thevideo" style="display:none;">
+                                        <?php
                                         // Affichage de l'iframe
                                         echo $iframe;
 
-                                        //Récupération d'Icon Play
-                                        $iconPlay = $videos["image"];
                                         ?>
                                     </div>
+                                    <style>
 
+                                        #thevideo {
+                                            position: relative;
+                                            padding-bottom: 0%;
+                                            overflow: hidden;
+                                            max-width: 100%;
+                                            height: auto;
+                                        }
+
+                                        #thevideo iframe,
+                                        #thevideo object,
+                                        #thevideo embed {
+                                            position: absolute;
+                                            top: 0;
+                                            left: 0;
+                                            width: 100%;
+                                            height: 100%;
+                                        }
+                                        button.ytp-large-play-button{
+                                            background: url("<?php echo $videos['image']['url']; ?>") !important;
+                                            height: 48px;
+                                            width: 68px;
+                                        }
+
+                                        button.ytp-large-play-button svg{
+                                            display: none;
+
+                                        }
+
+                                    </style>
 
 
                                 </div>
-                                <style>
 
-                                    #thevideo {
-                                        position: relative;
-                                        padding-bottom: 0%;
-                                        overflow: hidden;
-                                        max-width: 100%;
-                                        height: auto;
-                                    }
-
-                                    #thevideo iframe,
-                                    #thevideo object,
-                                    #thevideo embed {
-                                        position: absolute;
-                                        top: 0;
-                                        left: 0;
-                                        width: 100%;
-                                        height: 100%;
-                                    }
-                                    button.ytp-large-play-button{
-                                        background: url("<?php echo $videos['image']['url']; ?>") !important;
-                                        height: 48px;
-                                        width: 68px;
-                                    }
-
-                                    button.ytp-large-play-button svg{
-                                        display: none;
-
-                                    }
-
-                                </style>
                             <?php
                             endif;
                             ?>
